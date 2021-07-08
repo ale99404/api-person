@@ -1,16 +1,5 @@
-// var express = require('express');
-// var app  = express();
-// var http = require('http');
-
-// --new
-var PORT = process.env.PORT || 5000;
 var express = require('express');
-var app = express();
-
-var http = require('http');
-var server = http.Server(app);
-// ----
-
+var app  = express();
 
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
@@ -26,31 +15,13 @@ var con = mysql.createConnection({
     database: 'bghka8odsgyh8rbbk8nx'
 
 });
+  
+var server = app.listen(1348, function(){
+  var host = server.address().address
+  var port = server.address().port
+  console.log("server start",host,port);
 
-
-server.listen(PORT, function(){
-      var host = server.address().address
-      var port = server.address().port
-      console.log("server start",host,port);
 });
-
-
-// var server = http.createServer(sendSMSHandler);  server.listen(PORT);
-// var server = http.createServer(sendSMSHandler); 
-//  server.listen(PORT || 3000, function(){
-//   var host = server.address().address
-//   var port = server.address().port
-//   console.log("server start",host,port);
-// });
-
-// PORT || 3000
-
-// var server = app.listen(8080, function(){
-//   var host = server.address().address
-//   var port = server.address().port
-//   console.log("server start",host,port);
-
-// });
 
 con.connect(function(error){
   if(!!error) console.log(error,error.message);
